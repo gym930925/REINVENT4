@@ -67,5 +67,3 @@ tutorials/scoring_function
 tutorials/workflows
 tutorials/monitoring
 ```
-
-*By T. Worakul, EPFL*
