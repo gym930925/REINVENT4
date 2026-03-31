@@ -8,7 +8,7 @@ Command-line tool for generative molecular design using RNNs and Transformers.
 REINVENT4 generates SMILES strings and optimizes them against user-defined scoring functions. All behavior is controlled via a TOML configuration file.
 
 
-![Overview](asset/reinvent_overview.webp)
+![Overview](asset/reinvent_overview.svg)
 *Taken from Loeffler et al., J. Cheminformatics (2024) under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).*
 ### Generators
 

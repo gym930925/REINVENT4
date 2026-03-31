@@ -26,7 +26,7 @@ Two methods can be used independently or in sequence:
 - **Transfer Learning (TL)**: retrains a prior on a focused SMILES dataset (e.g. known actives for a target), producing an agent biased toward that chemical series.
 - **Reinforcement Learning (RL)**: iteratively updates the agent using a scoring function as reward signal.
 
-![Chemical space exploration](../asset/chemspace_exploration.webp)
+![Chemical space exploration](../asset/chemspace_exploration.svg)
 *Left: the prior samples broadly across chemical space. Middle: TL narrows the distribution toward a target region. Right: RL concentrates sampling on high-scoring molecules within that region. Taken from Loeffler et al., J. Cheminformatics (2024) under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).*
 
 ## Staged Learning / Curriculum Learning
