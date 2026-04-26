@@ -44,6 +44,28 @@ GPU memory is sufficient.
 Installation
 ------------
 
+### Using uv (recommended)
+
+[uv](https://docs.astral.sh/uv/) is a fast Python package manager that handles virtual environments and dependencies in one step.
+
+1. Clone this Git repository. Add `--depth 1` for only the newest version as the repository has grown quite large over time.
+    ```shell
+    git clone git@github.com:MolecularAI/REINVENT4.git  # --depth 1
+    ```
+1. Change directory to the repository and run `uv sync`.  The PyTorch index for CUDA 12.8 is pre-configured in `pyproject.toml`.
+    ```shell
+    cd REINVENT4
+    uv sync                   # core dependencies
+    uv sync --extra isim      # + iSIM similarity tracking in TensorBoard
+    uv sync --extra all       # + OpenEye ROCS (requires a license)
+    ```
+1. Test the tool.
+    ```shell
+    uv run reinvent --help
+    ```
+
+### Using conda
+
 1. Clone this Git repository. Add `--depth 1` for only the newest version as the repository has grown quite large over time.
     ```shell
     git clone git@github.com:MolecularAI/REINVENT4.git  # --depth 1
