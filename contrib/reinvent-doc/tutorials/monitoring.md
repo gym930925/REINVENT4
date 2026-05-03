@@ -131,6 +131,30 @@ Generator-specific input columns (`Input_Scaffold`, `Warheads`, etc.) are prepen
 
 ---
 
+## Diversity Monitoring with NaviDiv
+
+For detailed analysis of chemical diversity in your generated molecules, NaviDiv provides six complementary metrics: Scaffold, Ngram, Fragments, Cluster, Ring, and Functional Group diversity. You can use NaviDiv in two ways:
+
+1. **Live diversity constraints during RL** — add NaviDiv components to your scoring function to steer the optimization toward diverse chemotypes while optimizing your task objective.
+2. **Post-hoc analysis** — inspect your RL output CSV in the NaviDiv Streamlit dashboard to visualize diversity patterns, identify mode collapse, and validate that multiple chemical series were explored.
+
+Quick start:
+
+```bash
+# Install NaviDiv into your reinvent4 environment
+git clone https://github.com/LCMD-epfl/NaviDiv.git
+cd NaviDiv
+pip install -e .
+
+# Analyse your RL output
+streamlit run app.py
+# Then load your results.csv and run diversity scorers
+```
+
+For details on NaviDiv configuration, tuning parameters, and interpreting results, see [NaviDiv repository](https://github.com/LCMD-epfl/NaviDiv) and [paper](https://doi.org/10.1039/D5DD00487J).
+
+---
+
 ## Visualising with DataWarrior
 
 [DataWarrior](https://openmolecules.org/datawarrior/) is a free desktop tool that can render SMILES directly and is well-suited for browsing REINVENT output CSVs.

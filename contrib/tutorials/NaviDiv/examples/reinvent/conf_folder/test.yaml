@@ -1,0 +1,22 @@
+# Main Hydra configuration for NaviDiv + REINVENT4 example run.
+# Override wd and input_generator.file_path on the CLI or via a local config.
+# The run_reinvent.sh script sets these automatically.
+
+# Working directory where run outputs are written.
+# Override on CLI: wd=/path/to/your/run_dir
+wd: ???
+
+name: "stage1"
+generate_input_only: false
+input_generator:
+  # Path to a custom InputGenerator subclass (Python file).
+  # Use an absolute path or a path relative to your working directory.
+  # Override on CLI: input_generator.file_path=/path/to/InputGenerator_custom.py
+  file_path: ???
+  class_name: "InputGeneratorCustom"
+
+defaults:
+  - _self_
+  - diversity_scorer: 1_default
+  - reinvent_common: default
+  - stage_comp: QED

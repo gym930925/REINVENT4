@@ -50,6 +50,15 @@ REINVENT4 addresses this at two levels:
 - **Diversity Filter**: penalises repeated Murcko scaffolds during the run. Molecules are bucketed by scaffold; once a bucket fills, further molecules with that scaffold are penalised. Only molecules above `minscore` enter memory. Types: `IdenticalMurckoScaffold` (recommended), `IdenticalTopologicalScaffold`, `ScaffoldSimilarity` (Tanimoto-based), `PenalizeSameSmiles` (exact SMILES repetition).
 - **Inception (Experience Replay)**: replays the highest-scoring molecules seen so far alongside the current batch in the loss computation. Useful when high-scoring molecules are rare — prevents the agent from forgetting them between epochs. Memory can be pre-seeded with known actives. Reinvent only.
 
+### NaviDiv: Advanced Diversity Control
+
+Beyond the built-in diversity filter, **NaviDiv** offers fine-grained control over multiple diversity dimensions simultaneously. NaviDiv offers six complementary metrics: Scaffold, Ngram, Fragments, Cluster, Ring, and Functional Group diversity, and can be used in two ways:
+
+1. **Live constraints during RL:**  add NaviDiv-penalty components to your scoring function to steer the optimization toward diverse chemotypes while optimizing your task objective.
+2. **Post-hoc analysis:** inspect generated molecules in a Streamlit dashboard after the run to understand diversity patterns, identify mode collapse, and validate that multiple chemical scaffolds were explored.
+
+
+
 
 
 ----
@@ -70,3 +79,5 @@ References:
 6. Loeffler, H. H.; He, J.; Tibo, A.; Janet, J. P.; Voronov, A.; Mervin, L. H.; Engkvist, O. Reinvent 4: Modern AI-Driven Generative Molecule Design. *J. Cheminform.* **2024**, *16* (1), 20. [https://doi.org/10.1186/s13321-024-00812-5](https://doi.org/10.1186/s13321-024-00812-5)
 
 7. Guo, J.; Schwaller, P. Augmented Memory: Sample-Efficient Generative Molecular Design with Reinforcement Learning. *JACS Au* **2024**, *4* (6), 2160–2172. [https://doi.org/10.1021/jacsau.4c00066](https://doi.org/10.1021/jacsau.4c00066)
+
+8. Azzouzi, M.; Worakul, T.; Corminboeuf, C. NaviDiv: A Web App for Monitoring Chemical Diversity in Generative Molecular Design. *Digital Discovery* **2026**. [https://doi.org/10.1039/D5DD00487J](https://doi.org/10.1039/D5DD00487J)

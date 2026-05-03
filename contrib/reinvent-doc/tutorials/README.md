@@ -29,7 +29,7 @@ reinvent config.toml -l run.log -s 42
 4. [Scoring Function Design](scoring_function.md) — how to formulate objectives, choose transforms and weights, use built-in components, and write custom ones
 5. [Scoring](scoring.md) — evaluate an existing SMILES list against a scoring function without running RL; useful for validating your scoring setup
 6. [Common Workflows](workflows.md) — end-to-end strategies combining sampling, TL, and RL for different scenarios
-7. [Monitoring and Analysis](monitoring.md) — TensorBoard metrics during TL/RL, CSV output columns, and DataWarrior visualisation
+7. [Monitoring and Analysis](monitoring.md) — TensorBoard metrics during TL/RL, CSV output columns, DataWarrior visualisation, and NaviDiv for diversity monitoring
 
 ## Example Config Files
 
