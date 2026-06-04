@@ -1,0 +1,78 @@
+# MolScore scoring components example
+# Requires the `molscore` package as a dependency:
+#   pip install molscore
+# See https://github.com/MorganCThomas/MolScore for details.
+
+run_type = "scoring"
+output_csv = "scoring_molscore.csv"
+json_out_config = "_scoring_molscore.json"
+
+[parameters]
+
+smiles_file = "tests/chembl_random_100.smi"
+
+
+[scoring]
+
+type = "geometric_mean"
+parallel = false
+
+# QED via MolScore's RDKitDescriptors
+[[scoring.component]]
+[scoring.component.MolScoreComponent]
+
+[[scoring.component.MolScoreComponent.endpoint]]
+name = "molscore_QED"
+weight = 1.0
+
+[scoring.component.MolScoreComponent.endpoint.params]
+scoring_function = "RDKitDescriptors"
+prefix = "desc"
+metric = "QED"
+kwargs = '{"n_jobs": 1}'
+
+[scoring.component.MolScoreComponent.endpoint.transform]
+type = "sigmoid"
+high = 0.9
+low = 0.3
+k = 0.5
+
+# Tanimoto similarity to Celecoxib
+[[scoring.component]]
+[scoring.component.MolScoreComponent]
+
+[[scoring.component.MolScoreComponent.endpoint]]
+name = "molscore_similarity"
+weight = 1.0
+
+[scoring.component.MolScoreComponent.endpoint.params]
+scoring_function = "TanimotoSimilarity"
+prefix = "sim"
+metric = "Sim"
+kwargs = '{"ref_smiles": ["CC1=CC=C(C=C1)C1=CC(=NN1C1=CC=C(C=C1)S(N)(=O)=O)C(F)(F)F"], "fp": "ECFP4", "bits": 1024}'
+
+[scoring.component.MolScoreComponent.endpoint.transform]
+type = "sigmoid"
+high = 0.8
+low = 0.2
+k = 0.5
+
+# JNK3 activity prediction via MolScore's LegacyQSAR
+[[scoring.component]]
+[scoring.component.MolScoreComponent]
+
+[[scoring.component.MolScoreComponent.endpoint]]
+name = "molscore_JNK3"
+weight = 1.0
+
+[scoring.component.MolScoreComponent.endpoint.params]
+scoring_function = "LegacyQSAR"
+prefix = "JNK3"
+metric = "pred_proba"
+kwargs = '{"model": "molopt_JNK3", "env_engine": "conda", "server_grace": 300}'
+
+[scoring.component.MolScoreComponent.endpoint.transform]
+type = "sigmoid"
+high = 0.8
+low = 0.2
+k = 0.5
