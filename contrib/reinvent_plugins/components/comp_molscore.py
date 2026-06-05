@@ -7,7 +7,7 @@ class name and its keyword arguments via the REINVENT config.
 
 from __future__ import annotations
 
-__all__ = ["MolScoreComponent"]
+__all__ = ["MolScore"]
 
 import logging
 import tempfile
@@ -45,7 +45,7 @@ class Parameters:
 
 
 @add_tag("__component")
-class MolScoreComponent:
+class MolScore:
     """Adapter to use any MolScore scoring function in REINVENT
 
     MolScore (https://github.com/MorganCThomas/MolScore) exposes many
@@ -58,19 +58,19 @@ class MolScoreComponent:
 
     Example TOML config:
         [[scoring.component]]
-        [scoring.component.MolScoreComponent]
+        [scoring.component.MolScore]
 
-        [[scoring.component.MolScoreComponent.endpoint]]
+        [[scoring.component.MolScore.endpoint]]
         name = "QED"
         weight = 1.0
 
-        [scoring.component.MolScoreComponent.endpoint.params]
+        [scoring.component.MolScore.endpoint.params]
         scoring_function = "MolecularDescriptors"
         prefix = "desc"
         metric = "QED"
         kwargs = '{"n_jobs": 1}'
 
-        [scoring.component.MolScoreComponent.endpoint.transform]
+        [scoring.component.MolScore.endpoint.transform]
         type = "sigmoid"
         high = 0.9
         low = 0.3

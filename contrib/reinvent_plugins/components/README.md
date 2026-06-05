@@ -79,7 +79,7 @@ single yes/no score.  The only parameter is the assay name (one per endpoint).
   * `descriptor`: descriptor name
   * `nprocs`: number of processors
 
-* MolScoreComponent: Adapter to use any [MolScore](https://github.com/MorganCThomas/MolScore) scoring function in REINVENT. MolScore exposes many scoring functions (descriptors, similarity, docking, QSAR, etc.). Parameters:
+* MolScore: Adapter to use any [MolScore](https://github.com/MorganCThomas/MolScore) scoring function in REINVENT. MolScore exposes many scoring functions (descriptors, similarity, docking, QSAR, etc.) as used in common benchamrking setups. Parameters:
   * `scoring_function`: the MolScore scoring function class name, e.g. `MolecularDescriptors`
   * `metric`: the metric to extract from the scoring function results, e.g. `QED`
   * `prefix`: prefix for the MolScore scoring function (used for namespacing metrics)
