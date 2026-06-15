@@ -48,7 +48,7 @@ def param(request, json_config):
             "num_cols": 3,
         },
         "libinvent": {
-            "model_file": ".libinvent",
+            "model_file": json_config["LIBINVENT_CHEMBL_PRIOR_PATH"],
             "num_smiles": 10,
             "smiles_multiplier": 2,
             "smiles_file": json_config["LIBINVENT_SMILES_SCAFFOLDS"],
@@ -56,7 +56,7 @@ def param(request, json_config):
             "num_cols": 5,
         },
         "linkinvent": {
-            "model_file": ".linkinvent",
+            "model_file": json_config["LINKINVENT_CHEMBL_PRIOR_PATH"],
             "num_smiles": 10,
             "smiles_multiplier": 1,
             "smiles_file": json_config["LINKINVENT_SMILES_WARHEADS"],
@@ -64,7 +64,7 @@ def param(request, json_config):
             "num_cols": 5,
         },
         "mol2mol-multi": {
-            "model_file": ".m2m_high",
+            "model_file": json_config["MOLFORMER_PRIOR_PATH"],
             "num_smiles": 5,
             "smiles_multiplier": 3,
             "smiles_file": json_config["MOLFORMER_SMILES_SET_PATH"],
@@ -73,7 +73,7 @@ def param(request, json_config):
             "temperature": 1,
         },
         "mol2mol-beam": {
-            "model_file": ".m2m_high",
+            "model_file": json_config["MOLFORMER_PRIOR_PATH"],
             "num_smiles": 1,
             "smiles_multiplier": 3,
             "smiles_file": json_config["MOLFORMER_SMILES_SET_PATH"],

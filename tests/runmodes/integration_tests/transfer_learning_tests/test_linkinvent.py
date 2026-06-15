@@ -17,7 +17,7 @@ def setup(tmp_path, json_config, pytestconfig):
 
     config = {
         "parameters": {
-            "input_model_file": ".linkinvent",
+            "input_model_file": json_config["LINKINVENT_CHEMBL_PRIOR_PATH"],
             "smiles_file": json_config["TL_LINKINVENT_SMILES_PATH"],
             "output_model_file": str(output_model_file),
             "save_every_n_epochs": 2,

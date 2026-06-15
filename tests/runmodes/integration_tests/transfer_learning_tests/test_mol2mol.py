@@ -17,7 +17,7 @@ def setup(tmp_path, json_config, pytestconfig):
 
     config = {
         "parameters": {
-            "input_model_file": ".m2m_high",
+            "input_model_file": json_config["MOLFORMER_PRIOR_PATH"],
             "smiles_file": json_config["TL_MOLFORMER_SMILES_PATH"],
             "output_model_file": str(output_model_file),
             "save_every_n_epochs": 1,

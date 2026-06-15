@@ -17,7 +17,7 @@ def setup(tmp_path, json_config, pytestconfig):
 
     config = {
         "parameters": {
-            "input_model_file": ".libinvent",
+            "input_model_file": json_config["LIBINVENT_CHEMBL_PRIOR_PATH"],
             "smiles_file": json_config["TL_LIBINVENT_SMILES_PATH"],
             "output_model_file": str(output_model_file),
             "save_every_n_epochs": 2,
