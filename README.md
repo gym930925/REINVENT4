@@ -54,15 +54,16 @@ Installation
     conda create --name reinvent4 python=3.10
     conda activate reinvent4
     ```
-1. Change directory to the repository to install.  You will need to set the right processor type, see [PyTorch versions](https://pytorch.org/get-started/locally/). Linux supports CUDA (e.g. "cu126"), AMD ROCm (e.g. "rocm6.4"), Intel XPU ("xpu") and CPU. Windows supports CUDA, XPU and CPU.  Newer Apple chips e.g. M5 are supported by PyTorch's MPS backend (use "mac" as processor type). Optionally, you can select dependencies "openeye" (for ROCS; you need to obtain your own license), "chemprop1" for Chemprop v1, "isim" for similarity tracking in TensorBoard or "none" to skip all.  The default is installation of "all" dependencies.  See the help text from the install script for details.
+1. Change directory to the repository to install.  You will need to set the right processor type, see [PyTorch versions](https://pytorch.org/get-started/locally/). Make sure that the toolkit version (e.g. CUDA) is compatible with the hardware driver (e.g. NVIDIA) of your OS.  Linux supports CUDA (e.g. "cu126"), AMD ROCm (e.g. "rocm6.4"), Intel XPU ("xpu") and CPU. Windows supports CUDA, XPU and CPU.  Newer Apple chips e.g. M5 are supported by PyTorch's MPS backend (use "mac" as processor type). Optionally, you can select dependencies "openeye" (for ROCS; you need to obtain your own license), "chemprop1" for Chemprop v1, "isim" for similarity tracking in TensorBoard or "none" to skip all.  The default is installation of "all" dependencies.  See the help text from the install script for details.
     ```shell
     python install.py --help
 
-    # install all packages including chemprop2 for CUDA 12.8
-    python install.py cu128  # or rocm6.4, xpu, mac, cpu, etc.
+    # install all packages including chemprop2 for e.g. CUDA 12.6
+    # make sure the CUDA version is compatible with the NVIDIA driver
+    python install.py cu126  # or rocm6.4, xpu, mac, cpu, etc.
 
     # if you still want Chemprop v1 (but check https://chemprop.readthedocs.io/en/main/convert_v1_to_v2.html)
-    # python install.py -e cu128 -d all chemprop1  # install all packages with Chemprop v1
+    # python install.py -e cu126 -d all chemprop1  # install all packages with Chemprop v1
  
     ```
 1. Test the tool. The installer has added a script `reinvent` to your PATH.
@@ -78,7 +79,7 @@ Installation
     ```shell
     git clone git@github.com:MolecularAI/REINVENT4.git  # --depth 1
     ```
-1. Change directory to the repository and run `uv sync`.  The PyTorch index for CUDA 12.8 is pre-configured in `pyproject.toml`.
+1. Change directory to the repository and run `uv sync`.  The PyTorch index for CUDA 12.6 is pre-configured in `pyproject.toml`.
     ```shell
     cd REINVENT4
     uv sync                   # core dependencies
