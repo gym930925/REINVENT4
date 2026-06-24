@@ -18,12 +18,11 @@ import os
 import sys
 import time
 from collections import defaultdict
-
-import numpy as np
-import torch
-import torch_npu
 from rdkit import Chem
 from rdkit.Chem.rdchem import EditableMol
+import numpy as np
+import torch
+
 
 # ========== 内置测试数据 ==========
 ETHANE = "CC"
@@ -47,7 +46,7 @@ from reinvent.models.linkinvent.dataset.dataset import Dataset
 import torch.utils.data as tud
 
 # ========== 默认Prior路径 ==========
-DEFAULT_PRIOR_PATH = "/home/g00445338/REINVENT4/prior/linkinvent.prior"
+DEFAULT_PRIOR_PATH = "/home/g00445338/REINVENT4-4.7/prior/linkinvent.prior"
 
 
 def set_torch_device(device: torch.device):
@@ -374,18 +373,18 @@ def test_sampling(adapter: LinkinventAdapter, total_samples: int = 10000,
 
         all_full_smiles = []
         merge_success_count = 0
-        # for linker in all_output_smiles:
-        #     if not linker:
-        #         all_full_smiles.append("")
-        #         continue
-        #     if "*" in linker and "[*]" not in linker:
-        #         linker = linker.replace("*", "[*]")
-        #     full_smi = link_fragments(frag1, frag2, linker)
-        #     all_full_smiles.append(full_smi)
-        #     if not full_smi.startswith("FAILED") and not full_smi.startswith("INVALID"):
-        #         merge_success_count += 1
+        for linker in all_output_smiles:
+            if not linker:
+                all_full_smiles.append("")
+                continue
+            if "*" in linker and "[*]" not in linker:
+                linker = linker.replace("*", "[*]")
+            full_smi = link_fragments(frag1, frag2, linker)
+            all_full_smiles.append(full_smi)
+            if not full_smi.startswith("FAILED") and not full_smi.startswith("INVALID"):
+                merge_success_count += 1
 
-        # print(f"  合并成功: {merge_success_count}/{len(all_output_smiles)}")
+        print(f"  合并成功: {merge_success_count}/{len(all_output_smiles)}")
 
         case_file = os.path.join(output_dir, f"rnn_sample_case{idx}_{device_name}.csv")
         with open(case_file, "w", encoding="utf-8", newline="") as f:
